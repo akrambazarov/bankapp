@@ -5,39 +5,30 @@ import (
 	"fmt"
 )
 
-func ExampleTotal() {
-	fmt.Println(Total([]types.Card{
+func ExamplePaymentSources() {
+	fmt.Println(PaymentSources([]types.Card{
 		{
 			Balance: 1_000_00,
+			PAN:     "5555 6666 7777 8888",
 			Active:  true,
 		},
 	}))
-	fmt.Println(Total([]types.Card{
+	fmt.Println(PaymentSources([]types.Card{
 		{
 			Balance: 1_000_00,
-			Active:  true,
-		},
-		{
-			Balance: 2_000_00,
-			Active:  true,
-		},
-	}))
-	fmt.Println(Total([]types.Card{
-		{
-			Balance: 1_000_00,
+			PAN:     "5678 7889 0001 7898",
 			Active:  false,
 		},
 	}))
-	fmt.Println(Total([]types.Card{
+	fmt.Println(PaymentSources([]types.Card{
 		{
 			Balance: -1_000_00,
+			PAN:     "9085 9977 6678 9087",
 			Active:  true,
 		},
 	}))
-
 	//Output:
-	//100000
-	//300000
-	//0
-	//0
+	//[{card 5555 6666 7777 8888 100000}]
+	//[]
+	//[]
 }

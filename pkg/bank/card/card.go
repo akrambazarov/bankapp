@@ -4,16 +4,18 @@ import (
 	"bank/pkg/bank/types"
 )
 
-func Total(cards []types.Card) types.Money {
-	sum := int64(0)
-	for _, operation := range cards {
-		if !operation.Active {
+func PaymentSources(cards []types.Card) []types.PaymentSource {
+	var payments []types.PaymentSource
+	for _, card := range cards {
+		if !card.Active || card.Balance <= 0 {
 			continue
 		}
-		if operation.Balance <= 0 {
-			continue
-		}
-		sum += int64(operation.Balance)
+		payments = append(payments, types.PaymentSource{
+			Card:    "card",
+			Number:  "5555 6666 7777 8888",
+			Balance: 100000,
+		})
 	}
-	return types.Money(sum)
+
+	return payments
 }

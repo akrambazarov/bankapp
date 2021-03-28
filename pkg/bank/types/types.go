@@ -2,12 +2,6 @@ package types
 
 //Моней представляет собой денежную сумму в минимальных еденицы(центы, копеек, дирамов и.т.д)
 
-//Payment предстовляет собой инфо о платеже
-
-type Payment struct {
-	ID     int
-	Amount Money
-}
 type Money int64
 
 //Currency предстоаляет код валюты
@@ -33,4 +27,18 @@ type Card struct {
 	Color      string
 	Name       string
 	Active     bool
+}
+
+//Payment предстовляет собой инфо о платеже
+
+type Payment struct {
+	ID     int
+	Amount Money
+}
+
+//types.PaymentSource
+type PaymentSource struct {
+	Card    string
+	Number  string
+	Balance Money
 }
