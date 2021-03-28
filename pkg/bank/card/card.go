@@ -12,7 +12,7 @@ func PaymentSources(cards []types.Card) []types.PaymentSource {
 		}
 		payments = append(payments, types.PaymentSource{
 			Card:    "card",
-			Number:  "5555 6666 7777 8888",
+			Number:  string(card.PAN),
 			Balance: card.Balance,
 		})
 	}
